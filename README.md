@@ -22,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This CLI application scrapes the IMDB website to provide the a list of the top movies and movies that are out currently in theaters. You can input the number correlated with the movie in order to get more information on the movie.
+
+Movie Details include:
+1. Rank
+2. Title
+3. Year of Release Date
+4. IMDB rating
+5. Director
+6. Writers
+7. Main Actors
+8. Plot Summary
+9. Gross USA
+10. Gross WorldWide
 
 ## Development
 
