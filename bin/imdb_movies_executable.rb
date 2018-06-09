@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
 require_relative '../config/environment'
-#require './lib/environment'
-
-puts "hi"
+#require "bundler/setup"
 MoviesCLI.new.start
