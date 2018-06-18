@@ -3,49 +3,47 @@ class MoviesCLI
   def start
     list_top_movies
     menu
-    goodbye
   end
 
   def list_top_movies
-    puts "Top Movies"
-    puts
-    <<-DOC
-    1. "ShawShank Redemption"
-    2. "Inception"
-    DOC
-
-    @deals = Movies.today
-    #
-    # Movie Details include:
-    # 1. Rank
-    # 2. Title
-    # 3. Year of Release Date
-    # 4. IMDB rating
-    # 5. Director
-    # 6. Writers
-    # 7. Main Actors
-    # 8. Plot Summary
-    # 9. Gross USA
-    # 10. Gross WorldWide
-
-
+  puts "Top Movies:"
+   #start index at 1
+     Movies.top_movies.each.with_index(1) do |movie, x|
+       puts "#{x}. #{movie}"
+     end
+  #   binding.pry
   end
 
   def menu
     user_input = nil
-      while user_input != "exit"
-      puts "Enter the number of the deal you'd like more info on:"
-      input = gets.strip.downcase
 
-        case user_input
-        when "1"
-          puts "information on 1"
-        when "2"
-          puts "information on 2"
-        when "list_top_movies"
+      while user_input.to_i != 4
+        puts <<-HEREDOC
+
+Please enter a number for each selection:
+1. List Top Movies
+2. Search by Name
+3. Search by Rank
+4.
+5. Exit
+HEREDOC
+        user_input = gets.to_i
+
+    #  1. search by ranking
+    #  2. search by name
+    #  3. get entire list, type in name/ranking
+              #list top movies
+
+        if user_input == 1
           list_top_movies
+        elsif user_input == 2
+
+        elsif user_input == 3
+
+        elsif user_input == 4
+          goodbye
         else
-          puts "not sure what you want, please type list_top_movies or exit"
+          puts "Unable to process your request."
         end
       end
   end
