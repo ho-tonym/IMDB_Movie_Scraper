@@ -69,7 +69,7 @@ class MoviesCLI
 
       while @movie_menu_input != 6 || @movie_menu_input != 7
         puts ""
-        puts "Movie: #{movie.title} | Rank: #{movie.rank} | IMDB Rating: #{movie.imdb_rating}"
+        puts "Movie: #{movie.title} - #{movie.year_release} | Rank: #{movie.rank} | IMDB Rating: #{movie.imdb_rating}"
         puts ""
         puts "Please enter a number for your selection:"
         puts "1. Director"
@@ -79,13 +79,7 @@ class MoviesCLI
         puts "5. Gross Worldwide"
         puts "6. Menu"
         puts "7. Exit"
-        puts <<-Heredoc
-         "Director: #{movie.director}"
-         "Genre: #{movie.genres}"
-         "#{movie.plot_summary}"
-         "Gross USA: #{movie.gross_usa}"
-         "Gross Worldwide: #{movie.gross_world}"
-        Heredoc
+
       @movie_menu_input = gets.to_i
 
       if @movie_menu_input == 1
@@ -99,6 +93,7 @@ class MoviesCLI
       elsif @movie_menu_input == 5
         puts "Gross Worldwide: #{movie.gross_world}"
       elsif @movie_menu_input == 6
+        @looking_at_a_movie = false
         menu
       elsif @movie_menu_input == 7
         goodbye

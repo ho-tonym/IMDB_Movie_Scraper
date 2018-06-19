@@ -5,8 +5,8 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
 
   @@movie_title_rank_h = {}
   # each movie object
-  @@movie_objects = []
-  @@movie_imdb_ratings = []
+  @@movies_imdb_ratings = []
+  # 0-249
 
 
   # def self.top_movies
@@ -21,6 +21,7 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
   def self.all_movies
     @@movie_title_rank_h
   end
+
   def self.top_movies
     doc = Nokogiri::HTML(open("https://www.imdb.com/chart/top?ref_=nv_mv_250_6"))
 
@@ -39,7 +40,6 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
     end
 
     @@movies_imdb_ratings = doc.css("td[class='ratingColumn imdbRating']").text.gsub(/\s/,' ').split(" ")
-    #extraneous information
     @@movie_title_rank_h
   end
 
@@ -56,11 +56,14 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
 
       movie.title = movie_name
       #fix hard coded,
-      movie.rank = ""
-      movie.imdb_rating = ""#@@movies_imdb_ratings[user_input -1]
 
+      @@movie_title_rank_h.each {|rank,title|
+        if title == movie.title
+          movie.rank = rank #assign rank
+        end
+        }
+      movie.imdb_rating = @@movies_imdb_ratings[movie.rank - 1]
       movie.director = doc.css('//span[@itemprop="director"]').text.split("\s").join(" ")
-      binding.pry
       movie.genres = doc.at_xpath('//div[@itemprop="genre"]').text.gsub(/\W/,' ').split(" ")[1..-1].join(", ")
       #array
       movie.plot_summary = doc.at_xpath('//div[@class="summary_text"]').text.split("\s").join(" ")

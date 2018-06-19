@@ -1,3 +1,19 @@
+## Usage
+
+This CLI application scrapes the IMDB website to provide the a list of the top movies. You can input the name correlated with the movie in order to get more information on the movie.
+
+Movie Details include:
+1. Rank
+2. Title
+3. Year of Release Date
+4. IMDB rating
+5. Director
+6. Genres
+7. Plot Summary
+8. Gross USA
+9. Gross WorldWide
+
+
 # ImdbMovies
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/imdb_movies`. To experiment with that code, run `bin/console` for an interactive prompt.
@@ -20,21 +36,6 @@ Or install it yourself as:
 
     $ gem install imdb_movies
 
-## Usage
-
-This CLI application scrapes the IMDB website to provide the a list of the top movies and movies that are out currently in theaters. You can input the number correlated with the movie in order to get more information on the movie.
-
-Movie Details include:
-1. Rank
-2. Title
-3. Year of Release Date
-4. IMDB rating
-5. Director
-6. Writers
-7. Main Actors
-8. Plot Summary
-9. Gross USA
-10. Gross WorldWide
 
 ## Development
 
