@@ -14,18 +14,14 @@ show rank, imdb rating
 
 IMDB RATING
 doc.at_xpath('//td[@class="ratingColumn imdbRating"]').text.gsub(/\W/,' ').split(" ").join(".")
+# only first one, more specific
+doc.css("td[class='ratingColumn imdbRating']").text.gsub(/\s/,' ').split(" ")
+# all of them
+
 
 
 
 SEARCH BY RANK/NAME
-@movie_name = user_input
-@movie_name = "The Shawshank Redemption"
-movie = doc.at_xpath("//a[text()='#{@movie_name}']")
-movie["title"] # not useful
-movie["href"]# this is for getting the link
-https://www.imdb.com/"#{movie["href"]}"
-title = userinput or doc.at_xpath("//a[text()='#{@movie_name}']").text
-
 
 doc.at_css('td:contains("1.")')
 first rank
@@ -53,7 +49,6 @@ doc.at_xpath('//span[@itemprop="creator"]').text.split("\s").join(" ")
 h3 = boxoffice
 h4 class = inline - gross usa
 doc.at_xpath('//div[@id="article"]').text.split("\s")
-
 doc.at_css('h4:contains("Gross USA:")').text.split("\s")
 
 array = doc.at_xpath('//div[@id="titleDetails"]').text.split("\s")
@@ -209,6 +204,14 @@ end
 
     #type in a movie, checks if it is on imdb top 250 list
       #if it is, you can request to see more info or go back/exit
+      <<-HEREDOC
+
+      Please enter a number for each selection:
+      1. List Top Movies
+      2. Search by Name or Rank
+      3. Exit
+      HEREDOC
+
 
 good resoure:
 https://stackoverflow.com/questions/39653384/how-to-extract-links-and-link-text-from-html-using-nokogiri
