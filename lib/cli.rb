@@ -2,6 +2,7 @@
 class MoviesCLI
   def initialize
       @looking_at_a_movie = false
+      Movie.scrape
   end
 
   def start
@@ -11,14 +12,14 @@ class MoviesCLI
 
   def list_top_movies
   puts "Top Movies:"
-     Movie.top_movies.each do |x, movie|
+     Movie.all_movies.each do |x, movie|
        puts "#{x}. #{movie}"
      end
   end
 
   def list_search_by_name
     puts "Please enter the name of the movie you would like to get more information on:"
-    @movie_to_search = gets.chomp
+    @movie_to_search = gets.strip
     if @movie_to_search == "back"
       @movie_to_search
     else
@@ -34,14 +35,17 @@ class MoviesCLI
   def menu
       @user_input = nil
       while @looking_at_a_movie == false
-        puts "Welcome to the Top 250 IMDB Movie Scraper!"
-        puts ""
-        puts "Please enter a number for each selection:"
-        puts "1. List Top Movies"
-        puts "2. Search by Name or Rank"
-        puts "3. Exit"
-        puts ""
-        @user_input = gets.to_i
+        puts <<-HEREDOC.gsub /^\s*/, ""
+        ------------------------------------------
+        Welcome to the Top 250 IMDB Movie Scraper!
+
+        Please enter a number for each selection:
+        1. List Top Movies
+        2. Search by Name or Rank
+        3. Exit
+        ------------------------------------------
+        HEREDOC
+        @user_input = gets.strip.to_i
 
         if @user_input == 1
           list_top_movies
@@ -64,23 +68,25 @@ class MoviesCLI
   end
 
   def movie_menu(movie)
-  #  while new_input != 7 || new_input != 8
-  @movie_menu_input = nil
+      @movie_menu_input = nil
 
       while @movie_menu_input != 6 || @movie_menu_input != 7
-        puts ""
-        puts "Movie: #{movie.title} - #{movie.year_release} | Rank: #{movie.rank} | IMDB Rating: #{movie.imdb_rating}"
-        puts ""
-        puts "Please enter a number for your selection:"
-        puts "1. Director"
-        puts "2. Genres"
-        puts "3. Plot Summary"
-        puts "4. Gross USA"
-        puts "5. Gross Worldwide"
-        puts "6. Menu"
-        puts "7. Exit"
+        puts <<-HEREDOC.gsub /^\s*/, ""
+        ------------------------------------------
+        Movie: #{movie.title} - #{movie.year_release} | Rank: #{movie.rank} | IMDB Rating: #{movie.imdb_rating}
 
-      @movie_menu_input = gets.to_i
+        Please enter a number for your selection:
+        1. Director
+        2. Genres
+        3. Plot Summary
+        4. Gross USA
+        5. Gross Worldwide
+        6. Menu
+        7. Exit
+        ------------------------------------------
+        HEREDOC
+
+      @movie_menu_input = gets.strip.to_i
 
       if @movie_menu_input == 1
         puts "Director: #{movie.director}"
