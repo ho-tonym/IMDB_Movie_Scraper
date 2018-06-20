@@ -1,4 +1,5 @@
 ## Usage
+I wrote a blogpost about Nokogiri scraping here: https://medium.com/@ho.tonym/scraping-with-nokogiri-in-7-steps-1b81a9ad2f3
 
 This CLI application scrapes the IMDB website to provide the a list of the top movies. You can input the name correlated with the movie in order to get more information on the movie.
 
