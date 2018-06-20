@@ -62,7 +62,7 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
         if word == "Gross"
           if details_array[index + 1] == "USA:"
             if details_array[index + 2].start_with?("$")
-              gross_usa = details_array[index + 2]
+              gross_usa = details_array[index + 2].chomp(",")
             end
           end
         end
@@ -74,7 +74,7 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
           if details_array[index + 1] == "Worldwide"
             if details_array[index + 2] == "Gross:"
               if details_array[index + 3].start_with?("$")
-                gross_world = details_array[index + 3]
+                gross_world = details_array[index + 3].chomp(",")
               end
             end
           end
