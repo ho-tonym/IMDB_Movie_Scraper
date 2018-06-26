@@ -4,12 +4,16 @@ class MoviesCLI
   def initialize
       @in_movie_menu = false
       @current_movie = nil
-      Movie.scrape
   end
 
   def start
+    Movie.scrape
     menu
     goodbye
+  end
+
+  def goodbye
+    puts "See you later!"
   end
 
   def list_top_movies
@@ -43,7 +47,6 @@ class MoviesCLI
         puts <<-HEREDOC.gsub /^\s*/, ""
         ------------------------------------------
         Welcome to the Top 250 IMDB Movie Scraper!
-
         Please enter a number for each selection:
         1. List Top Movies
         2. Search by Name
@@ -70,7 +73,6 @@ class MoviesCLI
         puts <<-HEREDOC.gsub /^\s*/, ""
         ------------------------------------------
         Movie: #{movie.title} - #{movie.year_release} | Rank: #{movie.rank} | IMDB Rating: #{movie.imdb_rating}
-
         Please enter a number for your selection:
         1. Director
         2. Genres
@@ -103,12 +105,8 @@ class MoviesCLI
           @in_movie_menu = false
           menu
         elsif movie_menu_input == 7
-          goodbye
+
         else
           puts "Unable to process your request."
-  end
-
-  def goodbye
-    puts "See you later!"
   end
 end

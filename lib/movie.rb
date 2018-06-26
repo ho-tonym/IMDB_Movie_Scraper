@@ -1,3 +1,4 @@
+
 class Movie #Object
 
 attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
