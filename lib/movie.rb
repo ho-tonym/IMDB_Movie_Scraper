@@ -108,6 +108,7 @@ attr_accessor :link, :title, :rank, :imdb_rating, :director, :genres,
 
       movie.year_release = doc.at_xpath('//span[@id="titleYear"]').text
       @@movies << movie
+      movie
     end
   end
 end
