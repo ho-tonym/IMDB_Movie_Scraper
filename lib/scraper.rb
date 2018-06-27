@@ -13,12 +13,10 @@ class Scraper
     titles_array.pop(6)
     titles_array.shift(7)
 
-    titles_array
-    #return rirles array for the movie.function to make into a hash to diusplay to the user
+    titles_array    #return titles array for the movie.function to make into a hash to display to the user
   end
 
   def self.scrape_link(movie, movie_name)
-    if movie.title == nil
       doc = Nokogiri::HTML(open("https://www.imdb.com/chart/top?ref_=nv_mv_250_6"))
       movie_nokogiri_object = doc.at_xpath("//a[text()='#{movie_name}']")
       imdb_ratings_array = doc.css("td[class='ratingColumn imdbRating']").text.gsub(/\s/,' ').split(" ")
@@ -74,11 +72,7 @@ class Scraper
       movie.gross_world = gross_world
 
       movie.year_release = doc.at_xpath('//span[@id="titleYear"]').text
-      @@movies << movie
-      movie
-
-
-      #eturn a movie object to pass to movie.function
-    end
+      Movie.all_movie_objects << movie
+      movie # return movie object
   end
 end
