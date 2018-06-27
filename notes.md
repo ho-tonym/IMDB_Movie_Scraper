@@ -1,5 +1,12 @@
 LIST TOP 250 IMDB MOVIES
 
+Howard's Refactor Requests
+Let's refactor two main things:
+1. Create a Scraper class that just is only responsible for scraping and passing the data to the appropriate model class
+2. We want the model class, in this case Movie, to collect and hold actual Movie objects, not hashes
+3. Let's not scrape more than once for the same movie data
+
+
 GET LINK
 user_input = gets.chomp.downcase
 @movie_name = user_input
@@ -79,9 +86,3 @@ https://stackoverflow.com/questions/39653384/how-to-extract-links-and-link-text-
 #  "Gross USA: #{movie.gross_usa}"
 #  "Gross Worldwide: #{movie.gross_world}"
 # Heredoc
-
-Howard's Refactor Requests
-Let's refactor two main things:
-1. Create a Scraper class that just is only responsible for scraping and passing the data to the appropriate model class
-2. We want the model class, in this case Movie, to collect and hold actual Movie objects, not hashes
-3. Let's not scrape more than once for the same movie data
