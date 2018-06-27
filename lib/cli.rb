@@ -34,7 +34,7 @@ class MoviesCLI
     if movie_to_search == "back"
       @in_movie_menu = false
       menu
-    elsif Movie.all_movies.has_value?(movie_to_search)
+    elsif Movie.all_movie_titles.has_value?(movie_to_search)
       @current_movie = Movie.search_by_name(movie_to_search)
       movie_menu(@current_movie)
     else
