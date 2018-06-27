@@ -1,8 +1,8 @@
 #UI
 # Let's refactor two main things:
 # 1. Create a Scraper class that just is only responsible for scraping and passing the data to the appropriate model class
-# 2. We want the model class, in this case Movie, to collect and hold actual Movie objects, not hashes
-# 3. Let's not scrape more than once for the same movie data
+# 2. We want the model class, in this case Movie, to collect and hold actual Movie objects, not hashes - Done
+# 3. Let's not scrape more than once for the same movie data - Done
 class MoviesCLI
 
   def initialize
